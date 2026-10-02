@@ -7,7 +7,7 @@ namespace JoiDelivery.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class CartController(CartService cartService) : ControllerBase
+public class CartController(ICartService cartService) : ControllerBase
 {
     [HttpPost("product")]
     public ActionResult<CartProductInfo> AddProductToCart([FromBody] AddProductRequest addProductRequest)

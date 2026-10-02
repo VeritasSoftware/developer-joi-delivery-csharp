@@ -7,7 +7,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<UserService>();
-builder.Services.AddSingleton<CartService>();
+builder.Services.AddSingleton<ICartService, CartService>();
 builder.Services.AddSingleton<ProductService>();
 
 var app = builder.Build();

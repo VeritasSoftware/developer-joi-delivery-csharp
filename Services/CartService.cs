@@ -4,7 +4,7 @@ using JoiDelivery.Seed;
 
 namespace JoiDelivery.Services;
 
-public class CartService(ProductService productService, UserService userService)
+public class CartService(ProductService productService, UserService userService) : ICartService
 {
     private readonly Dictionary<string, Cart> _userCarts = SeedData.CartForUsers;
 
@@ -20,10 +20,10 @@ public class CartService(ProductService productService, UserService userService)
 
         return new CartProductInfo(cart, product, product.SellingPrice);
     }
-    
-    public Cart? GetCartForUser(string userId) => 
+
+    public Cart? GetCartForUser(string userId) =>
         _userCarts.GetValueOrDefault(userId);
-    
+
     private Cart? FetchCartForUser(User user) =>
         _userCarts.GetValueOrDefault(user.Id);
 }
