@@ -33,3 +33,5 @@ This way, you can easily swap out implementations without affecting the high-lev
 [Route("[controller]")]
 public class CartController(ICartService cartService) : ControllerBase
 ```
+
+All services should be injected via interfaces to adhere to the Dependency Inversion Principle and promote loose coupling.
