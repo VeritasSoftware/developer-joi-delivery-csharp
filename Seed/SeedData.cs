@@ -12,8 +12,8 @@ public static class SeedData
         { "user102", CreateCartForUser("user102", "Rachel", "Zane", "cart102") }
     };
 
-    public static GroceryStore Store101 { get; } = CreateStore("Fresh Picks", "store101");
-    public static GroceryStore Store102 { get; } = CreateStore("Natural Choice", "store102");
+    public static GroceryStore Store101 { get { return CreateStore("Fresh Picks", "store101"); } }
+    public static GroceryStore Store102 { get { return CreateStore("Natural Choice", "store102"); } }
     public static User User101 { get; } = CreateUser("user101", "John", "Doe");
     public static User User102 { get; } = CreateUser("user102", "Joe", "Dan");
     public static List<GroceryProduct> GroceryProducts { get; } =
