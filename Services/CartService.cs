@@ -11,8 +11,25 @@ public class CartService(ProductService productService, UserService userService)
     public CartProductInfo AddProductToCartForUser(AddProductRequest addProductRequest)
     {
         var user = userService.FetchUserById(addProductRequest.UserId);
+
+        if (user == null)
+        {
+            throw new ArgumentException($"User with ID {addProductRequest.UserId} not found.");
+        }
+
         var cart = FetchCartForUser(user);
+
+        if (cart == null)
+        {
+            throw new ArgumentException($"Cart for user with ID {addProductRequest.UserId} not found.");
+        }
+
         var product = productService.GetProduct(addProductRequest.ProductId, addProductRequest.OutletId);
+
+        if (product == null)
+        {
+            throw new ArgumentException($"Product with ID {addProductRequest.ProductId} not found in outlet {addProductRequest.OutletId}.");
+        }
 
         cart.Products ??= [];
 
